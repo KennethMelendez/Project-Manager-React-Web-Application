@@ -25,9 +25,9 @@ class Projects extends Component {
    }
     return (
       // can only have one main div on the top level
-      // can call properties using this.props from App
-      
+      // can call properties using this.props from App  
       <div className="Projects">
+      <h3> Latest Projects </h3>
         {projectItems}      
       </div>
     );

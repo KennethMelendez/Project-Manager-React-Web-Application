@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 // importing Projects from component folder
 import Projects from './Components/Projects'
+import AddProject from './Components/AddProject'
+//added npm package to create unique identitfier
+import uuid from 'uuid'
 // create a constructor to add state
 
 /*
@@ -13,9 +16,8 @@ import Projects from './Components/Projects'
   Data should be immutable 
   **SHOULD GO FROM TOP DOWN
 
-*/
+  ** EACH COMPONENT HAS THEIR OWN STATE
 
-/*
         SUMMARY
         1.) Setting our state in our main app component (Projects)
         2.) mapping it into projects as a property
@@ -25,6 +27,8 @@ import Projects from './Components/Projects'
 
 
 */
+
+//================================================================================================
 
 class App extends Component {
   constructor(){
@@ -39,29 +43,46 @@ class App extends Component {
 
   //lifecycle method fires every time componenet is rerendered
   /* THIS IS WHERE YOU WOULD PUT YOUR AJAX CALLS (In the life cycle method) */
+  // there is also componentDidMount (There are more lifecycle methods in the documentation)
   componentWillMount(){
     this.setState({projects: [
       {
+        id: uuid.v4(),
         title: 'Business Website',
         category: 'Web Design'
       },
       {
+        id: uuid.v4(),
         title : 'Social App',
         category: 'Mobile Development'
       },
       {
+        id: uuid.v4(),
         title: 'Ecommerce Shopping Cart',
         category: 'Web Development'
       }
     ]});
   }
+
+  // creating a function for handling the new project that gets created in add project
+  handleAddProject(project){
+    // React state immutible it means you dont want to change it you want to UPDATE IT
+    // get everything thats in it push to it and set it again
+
+    let projects = this.state.projects;
+    projects.push(project);
+    this.setState({projects:projects});
+
+    //console.log(project);
+  }
+
   render() {
     return (
       // can only have one main div on the top level
       // calling projects component
       // mapping projects as a property <Projects projects ={} />
       <div className="App">
-        My App
+        <AddProject addProject={this.handleAddProject.bind(this)}/>
         
         <Projects projects={this.state.projects} />
       </div>
