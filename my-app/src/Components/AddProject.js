@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import ProjectItem from './ProjectItem';
+// import ProjectItem from './ProjectItem';
 //added npm package to create unique identitfier
-import uuid from 'uuid'
+import uuid from 'uuid';
 // NOTICE ref in the input feild will help get the value of the form
+
+import PropTypes from 'prop-types';
+
 class AddProject extends Component {
     //store data we submit into state so adding a constructor
     constructor() {
@@ -11,12 +14,9 @@ class AddProject extends Component {
             newProject: {}
         }
     }
-
-
     static defaultProps = {
         categories: ['Web Design', 'Web Development', 'Mobile Development']
     }
-
     //method gets the form onSubmit (There is also on click)
     handleSubmit(e) {
         if (this.refs.title.value === '') {
@@ -61,6 +61,12 @@ class AddProject extends Component {
             </div>
         );
     }
+}
+
+//data validation
+AddProject.propTypes = {
+    category: PropTypes.array,
+    addProject: PropTypes.func
 }
 
 export default AddProject;

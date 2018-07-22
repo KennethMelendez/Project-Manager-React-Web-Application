@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class ProjectItem extends Component {
   // we need to pass it up to the main component in order to delete
@@ -17,6 +17,13 @@ class ProjectItem extends Component {
       </li>
     );
   }
+}
+
+
+// doing validation
+ProjectItem.propType = {
+  projects: PropTypes.object,
+  onDelete: PropTypes.func
 }
 
 export default ProjectItem;

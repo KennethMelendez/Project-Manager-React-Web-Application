@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 // importing Projects from component folder
-import Projects from './Components/Projects'
-import AddProject from './Components/AddProject'
+import Projects from './Components/Projects';
+import AddProject from './Components/AddProject';
 //added npm package to create unique identitfier
-import uuid from 'uuid'
+import uuid from 'uuid';
 // create a constructor to add state
 
 /*

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProjectItem from './ProjectItem';
+import PropTypes from 'prop-types';
 
 class Projects extends Component {
 
@@ -21,7 +22,6 @@ class Projects extends Component {
         // checking projects console.log(project);
         // going to put project item component and pass in each project
         return (
-          // left off here at 21:57
           <ProjectItem onDelete={this.deleteProject.bind(this)} key={project.title} project={project} />
         );
       });
@@ -36,5 +36,12 @@ class Projects extends Component {
     );
   }
 }
+
+// data validation npm install and import PropTypes
+Projects.propType = {
+  projects: PropTypes.array,
+  onDelete: PropTypes.func
+}
+
 
 export default Projects;
