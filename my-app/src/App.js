@@ -76,6 +76,15 @@ class App extends Component {
     //console.log(project);
   }
 
+  handleDeleteProject(id){
+    let projects = this.state.projects;
+    // search through the project indexes
+    let index = projects.findIndex(x => x.id === id);
+    projects.splice(index,1)
+    //reset the state like above
+    this.setState({projects:projects});
+  }
+
   render() {
     return (
       // can only have one main div on the top level
@@ -84,7 +93,7 @@ class App extends Component {
       <div className="App">
         <AddProject addProject={this.handleAddProject.bind(this)}/>
         
-        <Projects projects={this.state.projects} />
+        <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)}/>
       </div>
     );
   }
